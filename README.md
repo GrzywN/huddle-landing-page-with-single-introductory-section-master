@@ -33,7 +33,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub](https://github.com/GrzywN/huddle-landing-page-with-single-introductory-section-master)
-- Live Site URL: [Netlify](https://your-live-site-url.com)
+- Live Site URL: [Netlify](https://brave-nobel-a281e6.netlify.app/)
 
 ## My process
 
