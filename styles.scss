@@ -1,0 +1,221 @@
+// Imports //
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;600&display=swap");
+
+// Variables //
+
+$violet: hsl(257, 40%, 49%);
+$magenta: hsl(300, 69%, 71%);
+
+$bg-color: $violet;
+
+$color-button: $violet;
+$bg-color-button-hover: $magenta;
+
+// Fonts //
+
+$font-poppins: "Poppins", sans-serif;
+$font-open-sans: "Open Sans", sans-serif;
+
+$font-family-header: $font-poppins;
+$font-family-paragraph: $font-open-sans;
+$font-family-button: $font-poppins;
+
+// Mixins for typography //
+
+@mixin font-header-desktop {
+  font-family: $font-family-header;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 3.75rem;
+  text-align: left;
+}
+
+@mixin font-header-mobile {
+  font-family: $font-family-header;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2.25rem;
+  text-align: center;
+}
+
+@mixin font-paragraph-desktop {
+  font-family: $font-family-paragraph;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6875rem;
+  text-align: left;
+}
+
+@mixin font-paragraph-mobile {
+  font-family: $font-family-paragraph;
+  line-height: 1.5rem;
+  padding-inline: 0.5em;
+  text-align: center;
+}
+
+@mixin font-button {
+  font-family: $font-family-button;
+  font-size: 1rem;
+  line-height: 1.6875rem;
+  color: $color-button;
+  text-align: center;
+}
+
+// CSS //
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $bg-color;
+  background-image: url(./images/bg-mobile.svg);
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2em 2.5em;
+  gap: 1em;
+  color: white;
+}
+
+.header {
+  &__logo {
+    max-width: 7.5em;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  margin-bottom: 1em;
+  &__head {
+    max-width: 100%;
+  }
+  &__illustration {
+    max-width: 100%;
+    object-fit: cover;
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    margin-bottom: 3em;
+  }
+  &__header {
+    @include font-header-mobile;
+  }
+  &__paragraph {
+    @include font-paragraph-mobile;
+  }
+  &__button {
+    @include font-button;
+    border: 0;
+    border-radius: 25px;
+    width: min-content;
+    padding: 0.5rem 75px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    &:hover {
+      cursor: pointer;
+      color: white;
+      transition: all 200ms ease-in-out;
+      background-color: $bg-color-button-hover;
+      transform: scale(1.25);
+      transition: transform 200ms ease;
+    }
+  }
+}
+
+.footer {
+  &__socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 0.5em;
+  }
+  &__socials-a {
+    display: grid;
+    place-content: center;
+    border: 1px solid white;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 100%;
+    &:hover {
+      filter: invert(62%) sepia(70%) saturate(4504%) hue-rotate(293deg)
+        brightness(100%) contrast(103%);
+      transform: scale(1.25);
+      transition: transform 200ms ease;
+    }
+  }
+  &__socials-icon {
+    padding: 0.375rem;
+    max-width: 1.5rem;
+    max-height: 1.5rem;
+  }
+}
+
+@media (min-width: 41.25em) {
+  body {
+    background-image: url(./images/bg-desktop.svg);
+    background-size: contain;
+    padding-inline: 4.75em;
+  }
+  .header {
+    &__logo {
+      max-width: 200px;
+    }
+  }
+  .section {
+    flex-direction: row;
+    flex: 1;
+    &__illustration {
+      display: block;
+      max-width: 50vw;
+      height: 100%;
+      object-fit: contain;
+    }
+    &__body {
+      align-items: flex-start;
+      justify-content: center;
+      text-align: left;
+    }
+    &__header {
+      @include font-header-desktop;
+    }
+    &__paragraph {
+      padding: 0;
+      @include font-paragraph-desktop;
+    }
+    &__button {
+      padding: 0.75rem 4rem;
+    }
+  }
+
+  .footer {
+    &__socials {
+      justify-content: flex-end;
+    }
+  }
+}
+
+@media (min-width: 41.25em) and (max-width: 82.75em) {
+  body {
+    background-size: cover;
+  }
+}
+
+@media (min-width: 23.6875em) and (max-width: 41.25em) {
+  body {
+    background-size: cover;
+  }
+}
