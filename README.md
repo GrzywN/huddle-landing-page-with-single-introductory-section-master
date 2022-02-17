@@ -28,7 +28,11 @@ Users should be able to:
 
 <img src="./screenshot-desktop.png" title="" alt="" data-align="center">
 
-*Mobile preview*<img src="./screenshot-mobile.png" title="" alt="" data-align="center">
+*Mobile preview*
+
+
+
+<img src="./screenshot-mobile.png" title="" alt="" data-align="center">
 
 ### Links
 
