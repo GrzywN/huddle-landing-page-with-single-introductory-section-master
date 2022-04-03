@@ -1,27 +1,27 @@
-// Imports //
+// --Imports-- //
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;600&display=swap');
 
-// Variables //
+// --Variables-- //
 
-$violet: hsl(257, 40%, 49%);
-$magenta: hsl(300, 69%, 71%);
+$color-violet: hsl(257, 40%, 49%);
+$color-magenta: hsl(300, 69%, 71%);
 
-$bg-color: $violet;
+$bg-color: $color-violet;
 
-$color-button: $violet;
-$bg-color-button-hover: $magenta;
+$color-button: $color-violet;
+$bg-color-button-hover: $color-magenta;
 
-// Fonts //
+// --Fonts-- //
 
-$font-poppins: "Poppins", sans-serif;
-$font-open-sans: "Open Sans", sans-serif;
+$font-poppins: 'Poppins', sans-serif;
+$font-open-sans: 'Open Sans', sans-serif;
 
 $font-family-header: $font-poppins;
 $font-family-paragraph: $font-open-sans;
 $font-family-button: $font-poppins;
 
-// Mixins for typography //
+// --Mixins for typography-- //
 
 @mixin font-header-desktop {
   font-family: $font-family-header;
@@ -62,7 +62,7 @@ $font-family-button: $font-poppins;
   text-align: center;
 }
 
-// CSS //
+// --CSS-- //
 
 *,
 *::before,
@@ -74,7 +74,7 @@ $font-family-button: $font-poppins;
 
 body {
   background-color: $bg-color;
-  background-image: url(./images/bg-mobile.svg);
+  background-image: url(../images/bg-mobile.svg);
   background-repeat: no-repeat;
   width: 100%;
   min-height: 100vh;
@@ -96,11 +96,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 3em;
-  margin-bottom: 1em;
+
   &__head {
     max-width: 100%;
+    display: flex;
+    justify-content: center;
   }
   &__illustration {
+    width: min(100%, 32em);
     max-width: 100%;
     object-fit: cover;
   }
@@ -109,7 +112,6 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1.5em;
-    margin-bottom: 3em;
   }
   &__header {
     @include font-header-mobile;
@@ -119,18 +121,18 @@ body {
   }
   &__button {
     @include font-button;
+    cursor: pointer;
     border: 0;
-    border-radius: 25px;
-    width: min-content;
-    padding: 0.5rem 75px;
+    border-radius: 1.5rem;
+    padding: 0.5rem 4.6875rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition-property: color, background-color, transform;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
     &:hover {
-      cursor: pointer;
       color: white;
-      transition: all 200ms ease-in-out;
       background-color: $bg-color-button-hover;
-      transform: scale(1.25);
-      transition: transform 200ms ease;
+      transform: scale(1.1);
     }
   }
 }
@@ -150,11 +152,10 @@ body {
     width: 1.75rem;
     height: 1.75rem;
     border-radius: 100%;
+    transition: transform 200ms ease;
     &:hover {
-      filter: invert(62%) sepia(70%) saturate(4504%) hue-rotate(293deg)
-        brightness(100%) contrast(103%);
-      transform: scale(1.25);
-      transition: transform 200ms ease;
+      filter: invert(62%) sepia(70%) saturate(4504%) hue-rotate(293deg) brightness(100%) contrast(103%);
+      transform: scale(1.1);
     }
   }
   &__socials-icon {
@@ -164,27 +165,32 @@ body {
   }
 }
 
-@media (min-width: 41.25em) {
+@media screen and (min-width: 64em) {
   body {
-    background-image: url(./images/bg-desktop.svg);
+    background-image: url(../images/bg-desktop.svg);
     background-size: contain;
-    padding-inline: 4.75em;
+    padding-left: 4.75em;
+    padding-right: 4.75em;
   }
   .header {
     &__logo {
-      max-width: 200px;
+      max-width: 12.5rem;
     }
   }
   .section {
+    margin-bottom: 1em;
     flex-direction: row;
-    flex: 1;
     &__illustration {
+      flex: 1;
+      margin-top: 2.5rem;
       display: block;
-      max-width: 50vw;
       height: 100%;
       object-fit: contain;
     }
     &__body {
+      margin-top: 0.5rem;
+      margin-bottom: 3em;
+      flex: 1;
       align-items: flex-start;
       justify-content: center;
       text-align: left;
@@ -204,6 +210,12 @@ body {
   .footer {
     &__socials {
       justify-content: flex-end;
+      gap: 2em;
+    }
+    &__socials-item {
+      transform: scale(1.48);
+      position: relative;
+      bottom: 1rem;
     }
   }
 }
@@ -217,5 +229,14 @@ body {
 @media (min-width: 23.6875em) and (max-width: 41.25em) {
   body {
     background-size: cover;
+  }
+}
+
+@media screen and (min-width: 100em) {
+  html {
+    font-size: clamp(1rem, 1rem + 0.25vw, 2rem);
+  }
+  .section__illustration {
+    width: 40vw;
   }
 }
