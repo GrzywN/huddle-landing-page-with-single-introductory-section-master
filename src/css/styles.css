@@ -157,6 +157,10 @@ body {
     padding-right: 4.75em;
   }
 
+  .header {
+    position: relative;
+    top: 2em;
+  }
   .header__logo {
     max-width: 12.5rem;
   }
